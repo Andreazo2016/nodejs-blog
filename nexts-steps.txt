@@ -1,0 +1,44 @@
+blog post
+ Objetivo dessa aplicação é poder exercitar conceitos e tecnologias como:
+ - Validação de dados
+ - Upload de arquivos
+ - Access control list
+
+
+ Entidades:
+    user
+     - name
+     - email
+     - password
+     - type ['admin', 'author', 'user']
+
+    post
+     - title
+     - description
+     - cover_image
+     - user_id
+
+ 
+Must to have
+  - user
+    - create
+    - update
+    - delete
+    - findAll
+
+  - Auth
+       - Qual estratégia de autenticação usar? (metodologia de controle de acesso)
+
+tecnologias:
+ - fastify
+ - nodejs 20
+ - typeorm
+ - sqlite
+ - auth (controle de acesso)
+ - multer
+
+
+fazer depois
+ - Adicionar env
+ - Fazer um export de uma planilha xlx via background job enviando por email dos posts
+    - depois olhar bulmqp

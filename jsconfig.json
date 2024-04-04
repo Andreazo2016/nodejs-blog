@@ -1,0 +1,30 @@
+{
+    "compilerOptions": {
+        "baseUrl": "./src",
+        "paths": {
+            "@controllers/*": [
+                "./controllers/*"
+            ],
+            "@database/*": [
+                "./database/*"
+            ],
+            "@config/*": [
+                "./config/*"
+            ],
+            "@utils/*": [
+                "./utils/*"
+            ],
+            "@routes/*": [
+                "./routes/*"
+            ],
+            "@errors/*": [
+                "./errors/*"
+            ],
+            "@services/*": [
+                "./services/*"
+            ]
+        }
+    },
+    "include": ["src/**/*", "migrations-create.js"],
+    "exclude": ["node_modules"]
+}
