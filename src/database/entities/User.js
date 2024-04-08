@@ -22,11 +22,6 @@ const UserEntity = new EntitySchema({
             type: 'varchar',
             nullable: false
         },
-        type: {
-            type: 'varchar',
-            length: 100,
-            nullable: false
-        },
         created_at: {
             type: 'date',
             default: new Date()

@@ -7,32 +7,13 @@ import { createUserDTO, listAllUsersDTO } from './dtos/index.js'
 import PaginationUtil from '@utils/pagination.js'
 
 class UserController {
+
     constructor() {
         this.userService = new UserService()
     }
 
-    async login(req, res) {
-        const { email, password } = req.body
-        const user = await this.userService.findByEmail(email)
-        logger.info('fetching user by email')
-        if (!user) {
-            logger.info(`E-mail does not exists: ${email}`)
-            throw new BadRequestError(`E-mail/password incorrect!!`)
-        }
-
-        const isMatchPassword = PasswordUtil.compare({
-            rawPassword: password,
-            encryptedPassword: user.password
-        })
-
-        if(!isMatchPassword) {
-            logger.info(`Password does not match`)
-            throw new BadRequestError(`E-mail/password incorrect!!`)
-        }
-    }
-
     async create(req, res) {
-        const { name, email, password, type } = req.body
+        const { name, email, password } = req.body
         const user = await this.userService.findByEmail(email)
         logger.info('fetching user by email')
         if (user) {
@@ -43,8 +24,7 @@ class UserController {
         const userData = {
             name,
             email,
-            password: encryptedPassword,
-            type,
+            password: encryptedPassword
         }
         const userCreated = await this.userService.save(userData)
         const response = createUserDTO(userCreated)

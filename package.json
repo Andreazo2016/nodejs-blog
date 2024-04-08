@@ -13,19 +13,21 @@
     "@database": "./src/database/*",
     "@routes": "./src/routes/*",
     "@services": "./src/services/*",
-    "@utils": "./src/utils/*"
+    "@utils": "./src/utils/*",
+    "@configs": "./src/configs/*"
   },
   "scripts": {
     "start": "node  --loader=./src/utils/module-alias.js --no-warnings ./src/server.js",
     "dev": "node  --loader=./src/utils/module-alias.js --no-warnings  ./src/server.js | pino-pretty",
-    "migration:create":"node ./src/scripts/run-create-migration.js",
-    "migration:run":"npx typeorm migration:run -d ./src/database/index.js",
-    "migration:revert":"npx typeorm migration:revert -d ./src/database/index.js"
+    "migration:create": "node ./src/scripts/run-create-migration.js",
+    "migration:run": "npx typeorm migration:run -d ./src/database/index.js",
+    "migration:revert": "npx typeorm migration:revert -d ./src/database/index.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@fastify/jwt": "^8.0.0",
     "bcrypt": "^5.1.1",
     "esm-module-alias": "^2.1.0",
     "fastify": "^4.26.2",

@@ -1,8 +1,8 @@
 import userRepository from "@database/repositories/user-repository.js"
 class UserService {
-    async save({ name, email, password, type }) {
+    async save({ name, email, password }) {
         return userRepository.save({
-            name, email, password, type, created_at: new Date()
+            name, email, password, created_at: new Date()
         })
     }
 
