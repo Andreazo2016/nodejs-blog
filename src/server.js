@@ -6,5 +6,5 @@ await app.listen({ port }, async (error) => {
         logger.error(error)
         process.exit(1)
     }
-    logger.info(`Server is runing at port ${port}`)
+    logger.info(`Server is runing at port ${port}.`)
 })
