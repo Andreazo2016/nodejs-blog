@@ -5,11 +5,13 @@ import UserService from '@services/user-service.js'
 import PasswordUtil from '@utils/password.js'
 import { createUserDTO, listAllUsersDTO } from './dtos/index.js'
 import PaginationUtil from '@utils/pagination.js'
+import DocumentService from '@services/document-service.js'
 
 class UserController {
 
     constructor() {
         this.userService = new UserService()
+        this.documentService = new DocumentService()
     }
 
     async create(req, res) {
@@ -42,6 +44,22 @@ class UserController {
             limit,
             items: response
         }))
+    }
+
+    async listDocuments(req, res) {
+        const documents = await this.documentService.findAll()
+        return res.code(HttpStatusCode.OK).send(documents)
+    }
+
+    async bulkInsert(req, res) {
+        const file = req.file
+        console.log(file)
+        const document = {
+            title: file.filename.split('.')[0],
+            file_path: file.path
+        }
+        await this.documentService.save(document)
+        return res.code(HttpStatusCode.CREATED).send()
     }
 }
 

@@ -1,5 +1,6 @@
 import Fastify from 'fastify'
 import fastifJwt from '@fastify/jwt'
+import multer from 'fastify-multer'
 import 'reflect-metadata'
 import database from './database/index.js'
 import registerRoutes from './routes/index.js'
@@ -7,10 +8,12 @@ import handleJoiValidation from './utils/handle-joi-validation-error.js'
 import logger from '@utils/logger.js'
 import configs from '@configs/configs.js'
 
+
 const fastify = Fastify({
     logger: true
 })
 
+fastify.register(multer.contentParser)
 registerRoutes(fastify)
 fastify.register(fastifJwt, {
     secret: configs.jwt.secret_key
